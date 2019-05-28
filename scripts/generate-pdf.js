@@ -10,6 +10,7 @@ const puppeteer = require('puppeteer');
   await page.emulateMedia('screen');
   await page.pdf({
     path: './react.pdf', // path (relative to CWD) to save the PDF to.
+    format: 'A4',
     printBackground: true, // print background colors
     height: height,
   });

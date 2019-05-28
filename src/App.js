@@ -27,12 +27,13 @@ function App() {
             </Row>
             <Row className="custom-row">
               <Col sm={12}>
-                <TextareaField
+                <Address
                   label="Company Address"
                   value="18 Woodfield Avenue,
                   Batley,
                   WF17 7EA,
                   "
+                  border
                 />
               </Col>
             </Row>

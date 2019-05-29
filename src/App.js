@@ -1,7 +1,6 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-grid-system';
 import TextField from './TextField';
-import TextareaField from './TextareaField';
 
 import './app.scss';
 import Address from './Address';
@@ -79,11 +78,12 @@ function App() {
             </Row>
             <Row className="custom-row">
               <Col sm={12}>
-                <TextareaField
+                <Address
                   label="Goods/Service Delivered To"
                   value="School Transport,
                   Route 006
                   "
+                  border
                 />
               </Col>
             </Row>

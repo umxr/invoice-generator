@@ -2,21 +2,40 @@ import React from 'react';
 import { Row, Col } from 'react-grid-system';
 import styled from '@emotion/styled';
 
-const TableWrapper = styled(Row)``;
+const TableHeading = styled.p`
+  text-transform: capitalize;
+  text-decoration: underline;
+  font-size: 16px;
+  font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+`;
 
 function Table() {
   return (
-    <TableWrapper>
+    <Row>
       <Col sm={12}>
         <Row>
+          <Col sm={1}>
+            <TableHeading>Qty</TableHeading>
+          </Col>
+          <Col sm={4}>
+            <TableHeading>Description</TableHeading>
+          </Col>
+          <Col sm={2}>
+            <TableHeading>Unit Price</TableHeading>
+          </Col>
+          <Col sm={2}>
+            <TableHeading>VAT Rate</TableHeading>
+          </Col>
+          <Col sm={3}>
+            <TableHeading>Total</TableHeading>
+          </Col>
+        </Row>
+        {/* Loop Here */}
+        <Row>
           <Col sm={1} />
-          <Col sm={4} />
-          <Col sm={2} />
-          <Col sm={2} />
-          <Col sm={3} />
         </Row>
       </Col>
-    </TableWrapper>
+    </Row>
   );
 }
 

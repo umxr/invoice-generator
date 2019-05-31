@@ -1,9 +1,10 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-grid-system';
 import TextField from './TextField';
+import MultilineTextField from './MultilineTextField';
+import Table from './Table';
 
 import './app.scss';
-import Address from './Address';
 
 function App() {
   return (
@@ -26,7 +27,7 @@ function App() {
             </Row>
             <Row className="custom-row">
               <Col sm={12}>
-                <Address
+                <MultilineTextField
                   label="Company Address"
                   value="18 Woodfield Avenue,
                   Batley,
@@ -65,7 +66,7 @@ function App() {
           <Col sm={6}>
             <Row className="custom-row">
               <Col sm={12}>
-                <Address
+                <MultilineTextField
                   label="Invoice to"
                   value="Marketplace Invoices,
                   Kirklees Council,
@@ -78,7 +79,7 @@ function App() {
             </Row>
             <Row className="custom-row">
               <Col sm={12}>
-                <Address
+                <MultilineTextField
                   label="Goods/Service Delivered To"
                   value="School Transport,
                   Route 006
@@ -104,6 +105,7 @@ function App() {
             </Row>
           </Col>
         </Row>
+        <Table />
       </Container>
     </div>
   );

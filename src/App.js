@@ -8,7 +8,7 @@ function App() {
     <Fragment>
       <Router>
         <Form path="form" />
-        <PDF path="pdf" />
+        <PDF path="pdf/:routeId" />
       </Router>
     </Fragment>
   );

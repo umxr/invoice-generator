@@ -35,8 +35,8 @@ function Table() {
             <TableHeading>Total</TableHeading>
           </Col>
         </Row>
-        {data.map(item => (
-          <Row>
+        {data.map((item, i) => (
+          <Row key={i}>
             <Col sm={1} />
             <Col sm={4}>
               <MultilineTextField value={item.description} border />

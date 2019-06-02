@@ -23,12 +23,8 @@ const Label = styled.label`
 function MultilineTextField({ label, value, border }) {
   return (
     <div className="address">
-      <Label>{label}</Label>
-      <Content border>
-        {value.split(',').map(item => {
-          return `${item} \n`;
-        })}
-      </Content>
+      {label && <Label>{label}</Label>}
+      <Content border>{value.split(',').map(item => `${item} \n`)}</Content>
     </div>
   );
 }

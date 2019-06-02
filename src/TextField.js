@@ -1,32 +1,32 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import styled from '@emotion/styled';
 
-const Field = styled.div`
-  .label {
-    font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
-    text-transform: capitalize;
-    color: #000000;
-    font-weight: bold;
-    font-size: 18px;
-  }
-  .input {
-    display: block;
-    margin-top: 5px;
-    border: 1px solid #000000;
-    padding: 5px;
-    font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
-    color: #000000;
-    width: 100%;
-    font-size: 16px;
-  }
+const Input = styled.input`
+  display: block;
+  margin-top: 5px;
+  border: 1px solid #000000;
+  padding: 5px;
+  font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+  color: #000000;
+  width: 100%;
+  font-size: 16px;
+`;
+
+const Label = styled.p`
+  font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+  text-transform: capitalize;
+  color: #000000;
+  font-weight: bold;
+  font-size: 18px;
+  margin: 0;
 `;
 
 function TextField({ label, value }) {
   return (
-    <Field>
-      <label className="label">{label}</label>
-      <input type="text" className="input" defaultValue={value} />
-    </Field>
+    <Fragment>
+      {label && <Label className="label">{label}</Label>}
+      <Input type="text" className="input" defaultValue={value} />
+    </Fragment>
   );
 }
 

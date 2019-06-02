@@ -4,15 +4,15 @@ const puppeteer = require('puppeteer');
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
   const height = await page.evaluate(
-    () => document.documentElement.offsetHeight,
+    () => document.documentElement.offsetHeight
   );
-  await page.goto('http://localhost:3000/');
+  await page.goto('http://localhost:3000/pdf');
   await page.emulateMedia('screen');
   await page.pdf({
     path: './react.pdf', // path (relative to CWD) to save the PDF to.
     format: 'A4',
     printBackground: true, // print background colors
-    height: height,
+    height,
   });
   await browser.close();
 })();

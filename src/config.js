@@ -11,6 +11,8 @@ export default {
     telephone: '01924 503737',
     fax: '01942 503737',
     email: 'areematravel@virginmedia.com',
+    invoiceReference: '',
+    invoiceDate: '',
   },
   R208: {
     companyName: 'H Gora T/A Areema Travel',
@@ -24,5 +26,7 @@ export default {
     telephone: '01924 503737',
     fax: '01942 503737',
     email: 'areematravel@virginmedia.com',
+    invoiceReference: '',
+    invoiceDate: '',
   },
 };

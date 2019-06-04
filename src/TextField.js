@@ -21,11 +21,17 @@ const Label = styled.p`
   margin: 0;
 `;
 
-function TextField({ label, value }) {
+function TextField({ label, value, name, handleChange, routeId }) {
   return (
     <Fragment>
       {label && <Label className="label">{label}</Label>}
-      <Input type="text" className="input" defaultValue={value} />
+      <Input
+        type="text"
+        className="input"
+        onChange={e => handleChange(e, routeId)}
+        name={name}
+        value={value}
+      />
     </Fragment>
   );
 }

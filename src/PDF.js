@@ -8,7 +8,7 @@ import useRoute from './useRoute';
 import './app.scss';
 
 function PDF({ routeId }) {
-  const { state } = useRoute();
+  const { state, handleChange } = useRoute();
   const data = state[routeId];
   if (data) {
     return (
@@ -95,12 +95,24 @@ function PDF({ routeId }) {
               </Row>
               <Row className="custom-row">
                 <Col sm={12}>
-                  <TextField label="Invoice Reference" value="111" />
+                  <TextField
+                    routeId={routeId}
+                    handleChange={handleChange}
+                    label="Invoice Reference"
+                    name="invoiceReference"
+                    value={data.invoiceReference}
+                  />
                 </Col>
               </Row>
               <Row className="custom-row">
                 <Col sm={12}>
-                  <TextField label="Invoice Date" value="11/11/1111" />
+                  <TextField
+                    routeId={routeId}
+                    handleChange={handleChange}
+                    name="invoiceDate"
+                    label="Invoice Date"
+                    value={data.invoiceDate}
+                  />
                 </Col>
               </Row>
             </Col>

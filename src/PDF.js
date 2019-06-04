@@ -3,12 +3,13 @@ import { Container, Row, Col } from 'react-grid-system';
 import TextField from './TextField';
 import MultilineTextField from './MultilineTextField';
 import Table from './Table';
-import RouteConfig from './config';
+import useRoute from './useRoute';
 
 import './app.scss';
 
 function PDF({ routeId }) {
-  const data = RouteConfig[routeId];
+  const { state } = useRoute();
+  const data = state[routeId];
   if (data) {
     return (
       <div className="app">

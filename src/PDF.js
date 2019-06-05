@@ -1,16 +1,16 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-grid-system';
+
 import TextField from './TextField';
 import MultilineTextField from './MultilineTextField';
 import Table from './Table';
-import useRoute from './useRoute';
+import useRoute from './hooks/useRoute';
 
 import './app.scss';
 
 function PDF({ routeId }) {
   const { state, handleChange } = useRoute();
-  const data = state[routeId];
-  if (data) {
+  if (Object.keys(state).length > 0) {
     return (
       <div className="app">
         <Container>
@@ -23,14 +23,17 @@ function PDF({ routeId }) {
               </Row>
               <Row className="custom-row">
                 <Col sm={12}>
-                  <TextField label="Company Name" value={data.companyName} />
+                  <TextField
+                    label="Company Name"
+                    value={state[routeId].companyName}
+                  />
                 </Col>
               </Row>
               <Row className="custom-row">
                 <Col sm={12}>
                   <MultilineTextField
                     label="Company Address"
-                    value={data.companyAddress}
+                    value={state[routeId].companyAddress}
                     border
                   />
                 </Col>
@@ -39,7 +42,7 @@ function PDF({ routeId }) {
                 <Col sm={12}>
                   <TextField
                     label="Invoice Contact"
-                    value={data.invoiceContact}
+                    value={state[routeId].invoiceContact}
                   />
                 </Col>
               </Row>
@@ -47,23 +50,26 @@ function PDF({ routeId }) {
                 <Col sm={12}>
                   <TextField
                     label="VAT Registration Number"
-                    value={data.vatRegNo}
+                    value={state[routeId].vatRegNo}
                   />
                 </Col>
               </Row>
               <Row className="custom-row">
                 <Col sm={12}>
-                  <TextField label="Telephone" value={data.telephone} />
+                  <TextField
+                    label="Telephone"
+                    value={state[routeId].telephone}
+                  />
                 </Col>
               </Row>
               <Row className="custom-row">
                 <Col sm={12}>
-                  <TextField label="Fax" value={data.fax} />
+                  <TextField label="Fax" value={state[routeId].fax} />
                 </Col>
               </Row>
               <Row className="custom-row">
                 <Col sm={12}>
-                  <TextField label="Email" value={data.email} />
+                  <TextField label="Email" value={state[routeId].email} />
                 </Col>
               </Row>
             </Col>
@@ -72,7 +78,7 @@ function PDF({ routeId }) {
                 <Col sm={12}>
                   <MultilineTextField
                     label="Invoice to"
-                    value={data.invoiceTo}
+                    value={state[routeId].invoiceTo}
                   />
                 </Col>
               </Row>
@@ -80,7 +86,7 @@ function PDF({ routeId }) {
                 <Col sm={12}>
                   <MultilineTextField
                     label="Goods/Service Delivered To"
-                    value={data.DeliveredTo}
+                    value={state[routeId].DeliveredTo}
                     border
                   />
                 </Col>
@@ -89,7 +95,7 @@ function PDF({ routeId }) {
                 <Col sm={12}>
                   <TextField
                     label="Purchase order number"
-                    value={data.purchaseOrderNumber}
+                    value={state[routeId].purchaseOrderNumber}
                   />
                 </Col>
               </Row>
@@ -100,7 +106,7 @@ function PDF({ routeId }) {
                     handleChange={handleChange}
                     label="Invoice Reference"
                     name="invoiceReference"
-                    value={data.invoiceReference}
+                    value={state[routeId].invoiceReference}
                   />
                 </Col>
               </Row>
@@ -111,13 +117,13 @@ function PDF({ routeId }) {
                     handleChange={handleChange}
                     name="invoiceDate"
                     label="Invoice Date"
-                    value={data.invoiceDate}
+                    value={state[routeId].invoiceDate}
                   />
                 </Col>
               </Row>
             </Col>
           </Row>
-          <Table />
+          <Table data={state[routeId].table} />
         </Container>
       </div>
     );

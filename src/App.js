@@ -7,7 +7,7 @@ function App() {
   return (
     <Fragment>
       <Router>
-        <Form path="form" />
+        <Form path="form/:routeId" />
         <PDF path="pdf/:routeId" />
       </Router>
     </Fragment>

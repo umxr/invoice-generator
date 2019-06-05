@@ -13,6 +13,15 @@ export default {
     email: 'areematravel@virginmedia.com',
     invoiceReference: '',
     invoiceDate: '',
+    table: [
+      {
+        qty: null,
+        description: 'Line 1, Line 2, Line 3',
+        unitPrice: 20,
+        VATRate: 12,
+        Total: 123,
+      },
+    ],
   },
   R208: {
     companyName: 'H Gora T/A Areema Travel',
@@ -28,5 +37,14 @@ export default {
     email: 'areematravel@virginmedia.com',
     invoiceReference: '',
     invoiceDate: '',
+    table: [
+      {
+        qty: null,
+        description: 'Line 1, Line 2, Line 3',
+        unitPrice: 20,
+        VATRate: 12,
+        Total: 123,
+      },
+    ],
   },
 };

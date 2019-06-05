@@ -5,8 +5,6 @@ import styled from '@emotion/styled';
 import MultilineTextField from './MultilineTextField';
 import TextField from './TextField';
 
-import data from './data';
-
 const TableHeading = styled.p`
   text-transform: capitalize;
   text-decoration: underline;
@@ -14,7 +12,7 @@ const TableHeading = styled.p`
   font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
 `;
 
-function Table() {
+function Table({ data }) {
   return (
     <Row>
       <Col sm={12}>

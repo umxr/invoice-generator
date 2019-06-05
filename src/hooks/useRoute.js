@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { RouteContext } from './Context';
+import { RouteContext } from '../context';
 
 const useRoute = () => {
   const [state, setState] = useContext(RouteContext);

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import defaultState from './config';
+import defaultState from '../config';
 
 const RouteContext = React.createContext(defaultState);
 

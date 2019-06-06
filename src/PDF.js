@@ -9,7 +9,7 @@ import useRoute from './hooks/useRoute';
 import './app.scss';
 
 function PDF({ routeId }) {
-  const { state, handleChange } = useRoute();
+  const { state } = useRoute();
   if (Object.keys(state).length > 0) {
     return (
       <div className="app">
@@ -102,8 +102,6 @@ function PDF({ routeId }) {
               <Row className="custom-row">
                 <Col sm={12}>
                   <TextField
-                    routeId={routeId}
-                    handleChange={handleChange}
                     label="Invoice Reference"
                     name="invoiceReference"
                     value={state[routeId].invoiceReference}
@@ -113,8 +111,6 @@ function PDF({ routeId }) {
               <Row className="custom-row">
                 <Col sm={12}>
                   <TextField
-                    routeId={routeId}
-                    handleChange={handleChange}
                     name="invoiceDate"
                     label="Invoice Date"
                     value={state[routeId].invoiceDate}

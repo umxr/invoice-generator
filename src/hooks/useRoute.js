@@ -3,6 +3,7 @@ import { RouteContext } from '../context';
 
 const useRoute = () => {
   const [state, setState] = useContext(RouteContext);
+  console.log(state);
   function handleChange(e, routeId) {
     const { name, value } = e.target;
     setState(state => ({

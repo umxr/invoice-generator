@@ -119,7 +119,7 @@ function PDF({ routeId }) {
               </Row>
             </Col>
           </Row>
-          <Table data={state[routeId].table} />
+          <Table routeId={routeId} />
         </Container>
       </div>
     );

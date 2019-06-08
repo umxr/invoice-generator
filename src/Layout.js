@@ -6,7 +6,7 @@ import { Link } from '@reach/router';
 const Nav = styled.ul`
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   padding: 0;
 `;
 

@@ -26,6 +26,7 @@ function PDF({ routeId }) {
                   <TextField
                     label="Company Name"
                     value={state[routeId].companyName}
+                    readOnly
                   />
                 </Col>
               </Row>
@@ -43,6 +44,7 @@ function PDF({ routeId }) {
                   <TextField
                     label="Invoice Contact"
                     value={state[routeId].invoiceContact}
+                    readOnly
                   />
                 </Col>
               </Row>
@@ -51,6 +53,7 @@ function PDF({ routeId }) {
                   <TextField
                     label="VAT Registration Number"
                     value={state[routeId].vatRegNo}
+                    readOnly
                   />
                 </Col>
               </Row>
@@ -59,17 +62,22 @@ function PDF({ routeId }) {
                   <TextField
                     label="Telephone"
                     value={state[routeId].telephone}
+                    readOnly
                   />
                 </Col>
               </Row>
               <Row className="custom-row">
                 <Col sm={12}>
-                  <TextField label="Fax" value={state[routeId].fax} />
+                  <TextField label="Fax" value={state[routeId].fax} readOnly />
                 </Col>
               </Row>
               <Row className="custom-row">
                 <Col sm={12}>
-                  <TextField label="Email" value={state[routeId].email} />
+                  <TextField
+                    label="Email"
+                    value={state[routeId].email}
+                    readOnly
+                  />
                 </Col>
               </Row>
             </Col>
@@ -96,6 +104,7 @@ function PDF({ routeId }) {
                   <TextField
                     label="Purchase order number"
                     value={state[routeId].purchaseOrderNumber}
+                    readOnly
                   />
                 </Col>
               </Row>
@@ -105,6 +114,7 @@ function PDF({ routeId }) {
                     label="Invoice Reference"
                     name="invoiceReference"
                     value={state[routeId].invoiceReference}
+                    readOnly
                   />
                 </Col>
               </Row>
@@ -114,6 +124,7 @@ function PDF({ routeId }) {
                     name="invoiceDate"
                     label="Invoice Date"
                     value={state[routeId].invoiceDate}
+                    readOnly
                   />
                 </Col>
               </Row>

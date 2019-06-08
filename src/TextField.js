@@ -21,16 +21,17 @@ const Label = styled.p`
   margin: 0;
 `;
 
-function TextField({ label, value, name, handleChange, routeId }) {
+function TextField({ label, value, name, handleChange, routeId, readOnly }) {
   return (
     <Fragment>
       {label && <Label className="label">{label}</Label>}
       <Input
         type="text"
         className="input"
-        onChange={e => handleChange(e, routeId)}
+        {...!readOnly && { onChange: e => handleChange(e, routeId) }}
         name={name}
-        value={value}
+        {...(readOnly ? { value } : { defaultValue: value })}
+        {...readOnly && { readOnly: true }}
       />
     </Fragment>
   );

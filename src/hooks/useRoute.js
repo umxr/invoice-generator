@@ -43,8 +43,14 @@ const useRoute = () => {
   }
   function updateRowInput(e, routeId, id) {
     const { name, value } = e.target;
+    let formattedValue;
+    if (value.includes('£')) {
+      formattedValue = parseFloat(value.replace('£', ''));
+    } else if (value.includes('%')) {
+      formattedValue = parseFloat(value.replace('%', ''));
+    }
     const updatedRows = state[routeId].table.map(el =>
-      el.id === id ? { ...el, [name]: value } : el
+      el.id === id ? { ...el, [name]: formattedValue } : el
     );
 
     setState(state => ({

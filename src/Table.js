@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment } from 'react';
 import { Row, Col } from 'react-grid-system';
 import uuid from 'uuid/v4';
 import styled from '@emotion/styled';
@@ -22,24 +22,19 @@ const Button = styled.button`
 `;
 
 function Table({ routeId, form }) {
-  const { state, createRow } = useRoute();
+  const { state, updateRow, createRow, deleteRow, updateRowInput } = useRoute();
   const data = state[routeId].table;
-  const [localState, localSetState] = useState(data);
 
   function addRow() {
-    const a = {
+    const payload = {
       id: uuid(),
+      qty: null,
+      description: 'Line 1, Line 2, Line 3',
+      unitPrice: 0,
+      VATRate: 0,
+      Total: 0,
     };
-    localSetState(state => [...state, a]);
-  }
-
-  function rowInputChange(e, id) {
-    const { name, value } = e.target;
-    const updatedRows = localState.map(el =>
-      el.id === id ? { ...el, [name]: value } : el
-    );
-
-    localSetState(state => updatedRows);
+    createRow(routeId, payload);
   }
 
   return (
@@ -69,49 +64,60 @@ function Table({ routeId, form }) {
             <TableHeading>Total</TableHeading>
           </Col>
         </Row>
-        {localState.map(item => (
-          <Row key={item.id}>
-            <Col sm={1} />
-            <Col sm={form ? 3 : 4}>
-              <MultilineTextField value={item.description} border />
-            </Col>
-            <Col sm={2}>
-              <TextField
-                value={`£${item.unitPrice ? item.unitPrice : 0}`}
-                handleChange={e => rowInputChange(e, item.id)}
-                name="unitPrice"
-              />
-            </Col>
-            <Col sm={2}>
-              <TextField
-                value={`${item.VATRate ? item.VATRate : 0}%`}
-                handleChange={e => rowInputChange(e, item.id)}
-                name="VATRate"
-              />
-            </Col>
-            <Col sm={form ? 2 : 3}>
-              <TextField
-                value={`£${item.Total ? item.Total : 0}`}
-                handleChange={e => rowInputChange(e, item.id)}
-                name="Total"
-              />
-            </Col>
-            {form && (
-              <Fragment>
-                <Col sm={1}>
-                  <Button type="button" table>
-                    Delete
-                  </Button>
-                </Col>
-                <Col sm={1}>
-                  <Button type="button" table>
-                    Update
-                  </Button>
-                </Col>
-              </Fragment>
-            )}
-          </Row>
-        ))}
+        {data.map(item => {
+          const rowData = { ...item };
+          return (
+            <Row key={item.id}>
+              <Col sm={1} />
+              <Col sm={form ? 3 : 4}>
+                <MultilineTextField value={item.description} border />
+              </Col>
+              <Col sm={2}>
+                <TextField
+                  value={`£${item.unitPrice ? item.unitPrice : 0}`}
+                  handleChange={e => updateRowInput(e, routeId, item.id)}
+                  name="unitPrice"
+                />
+              </Col>
+              <Col sm={2}>
+                <TextField
+                  value={`${item.VATRate ? item.VATRate : 0}%`}
+                  handleChange={e => updateRowInput(e, routeId, item.id)}
+                  name="VATRate"
+                />
+              </Col>
+              <Col sm={form ? 2 : 3}>
+                <TextField
+                  value={`£${item.Total ? item.Total : 0}`}
+                  handleChange={e => updateRowInput(e, routeId, item.id)}
+                  name="Total"
+                />
+              </Col>
+              {form && (
+                <Fragment>
+                  <Col sm={1}>
+                    <Button
+                      onClick={() => deleteRow(routeId, item.id)}
+                      type="button"
+                      table
+                    >
+                      Delete
+                    </Button>
+                  </Col>
+                  <Col sm={1}>
+                    <Button
+                      onClick={() => updateRow(routeId, rowData)}
+                      type="button"
+                      table
+                    >
+                      Update
+                    </Button>
+                  </Col>
+                </Fragment>
+              )}
+            </Row>
+          );
+        })}
       </Col>
     </Row>
   );

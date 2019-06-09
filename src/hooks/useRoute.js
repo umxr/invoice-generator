@@ -11,18 +11,57 @@ const useRoute = () => {
     }));
   }
   function createRow(routeId, payload) {
-    const table = [...state[routeId].table, payload];
     setState(state => ({
       ...state,
       [routeId]: {
         ...state[routeId],
-        table,
+        table: [...state[routeId].table, payload],
       },
     }));
   }
+  function updateRow(routeId, payload) {
+    const updatedRows = state[routeId].table.map(item =>
+      item.id === payload.id ? { ...item, ...payload } : item
+    );
+    setState(state => ({
+      ...state,
+      [routeId]: {
+        ...state[routeId],
+        table: updatedRows,
+      },
+    }));
+  }
+  function deleteRow(routeId, id) {
+    const updatedRows = state[routeId].table.filter(item => item.id !== id);
+    setState(state => ({
+      ...state,
+      [routeId]: {
+        ...state[routeId],
+        table: updatedRows,
+      },
+    }));
+  }
+  function updateRowInput(e, routeId, id) {
+    const { name, value } = e.target;
+    const updatedRows = state[routeId].table.map(el =>
+      el.id === id ? { ...el, [name]: value } : el
+    );
+
+    setState(state => ({
+      ...state,
+      [routeId]: {
+        ...state[routeId],
+        table: updatedRows,
+      },
+    }));
+  }
+
   return {
     handleChange,
     createRow,
+    updateRow,
+    deleteRow,
+    updateRowInput,
     state,
   };
 };

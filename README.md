@@ -1,6 +1,6 @@
 TODO
 
 - add rows to invoice form
-- CUD form form rows
+- CRUD form form rows
 - calculate the invoice form
 - update pdf gen command

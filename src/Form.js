@@ -16,7 +16,7 @@ const FormRow = styled(Row)`
 `;
 
 function Form({ routeId }) {
-  const { state, handleChange } = useRoute();
+  const { state, handleChange, createRow } = useRoute();
   return (
     <Layout>
       <Container>

@@ -1,5 +1,6 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import { Row, Col } from 'react-grid-system';
+import uuid from 'uuid/v4';
 import styled from '@emotion/styled';
 
 import MultilineTextField from './MultilineTextField';
@@ -23,11 +24,31 @@ const Button = styled.button`
 function Table({ routeId, form }) {
   const { state, createRow } = useRoute();
   const data = state[routeId].table;
+  const [localState, localSetState] = useState(data);
+
+  function addRow() {
+    const a = {
+      id: uuid(),
+    };
+    localSetState(state => [...state, a]);
+  }
+
+  function rowInputChange(e, id) {
+    const { name, value } = e.target;
+    const updatedRows = localState.map(el =>
+      el.id === id ? { ...el, [name]: value } : el
+    );
+
+    localSetState(state => updatedRows);
+  }
+
   return (
     <Row>
       {form && (
         <Col sm={12}>
-          <Button type="submit">Add Row</Button>
+          <Button onClick={addRow} type="submit">
+            Add Row
+          </Button>
         </Col>
       )}
       <Col sm={12}>
@@ -48,20 +69,32 @@ function Table({ routeId, form }) {
             <TableHeading>Total</TableHeading>
           </Col>
         </Row>
-        {data.map((item, i) => (
-          <Row key={i}>
+        {localState.map(item => (
+          <Row key={item.id}>
             <Col sm={1} />
             <Col sm={form ? 3 : 4}>
               <MultilineTextField value={item.description} border />
             </Col>
             <Col sm={2}>
-              <TextField value={`£${item.unitPrice}`} />
+              <TextField
+                value={`£${item.unitPrice ? item.unitPrice : 0}`}
+                handleChange={e => rowInputChange(e, item.id)}
+                name="unitPrice"
+              />
             </Col>
             <Col sm={2}>
-              <TextField value={`${item.VATRate}%`} />
+              <TextField
+                value={`${item.VATRate ? item.VATRate : 0}%`}
+                handleChange={e => rowInputChange(e, item.id)}
+                name="VATRate"
+              />
             </Col>
             <Col sm={form ? 2 : 3}>
-              <TextField value={`£${item.Total}`} />
+              <TextField
+                value={`£${item.Total ? item.Total : 0}`}
+                handleChange={e => rowInputChange(e, item.id)}
+                name="Total"
+              />
             </Col>
             {form && (
               <Fragment>

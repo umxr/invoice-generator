@@ -24,7 +24,9 @@ function MultilineTextField({ label, value, border }) {
   return (
     <div className="address">
       {label && <Label>{label}</Label>}
-      <Content border>{value.split(',').map(item => `${item} \n`)}</Content>
+      <Content border>
+        {value && value.split(',').map(item => `${item} \n`)}
+      </Content>
     </div>
   );
 }

@@ -1,3 +1,5 @@
+import uuid from 'uuid/v4';
+
 export default {
   R204: {
     companyName: 'H Gora T/A Areema Travel',
@@ -15,6 +17,7 @@ export default {
     invoiceDate: '',
     table: [
       {
+        id: uuid(),
         qty: null,
         description: 'Line 1, Line 2, Line 3',
         unitPrice: 20,
@@ -39,6 +42,7 @@ export default {
     invoiceDate: '',
     table: [
       {
+        id: uuid(),
         qty: null,
         description: 'Line 1, Line 2, Line 3',
         unitPrice: 20,
